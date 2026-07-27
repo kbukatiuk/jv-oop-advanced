@@ -5,7 +5,7 @@ import java.util.Random;
 public class FigureSupplier {
     private static final int FIGURE_TYPES_COUNT = 5;
     private static final int MAX_SIZE = 10;
-    private static double DEFAULT_RADIUS = 10;
+    private static final double DEFAULT_RADIUS = 10;
     private static final String DEFAULT_COLOR = "white";
 
     private final Random random = new Random();
@@ -22,9 +22,13 @@ public class FigureSupplier {
                 return new Rectangle(getRandomSize(), getRandomSize(), color);
             case 2:
                 return new RightTriangle(getRandomSize(),getRandomSize(), color);
-            default:
+            case 3:
+                return new Circle(getRandomSize(), color);
+            case 4:
                 return new IsoscelesTrapezoid(getRandomSize(), getRandomSize(),
                         getRandomSize(), color);
+            default:
+                throw new RuntimeException("Unknown figure type: " + type);
         }
     }
 
